@@ -1,7 +1,7 @@
 import 'package:challengeday1/classes/upload_photo.dart';
+import 'package:challengeday1/classes/upload_photo_list_class.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import '../upload_photo_data.dart';
 import '../utilities/constants.dart';
 import '../utilities/custom_animated_bottom_bar.dart';
 import 'account_screen.dart';
@@ -9,7 +9,7 @@ import 'home_screen.dart';
 import 'search_screen.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'dart:io';
-import 'package:provider/provider.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class PhotoScreen extends StatefulWidget {
   static String id = 'photo_screen';
@@ -28,99 +28,6 @@ class _PhotoScreenState extends State<PhotoScreen> {
     SearchScreen.id,
     AccountScreen.id,
   ];
-
-  late String _fileName = '';
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  bool _validInput = false;
-  // Alert dialog
-  Future<void> createAletDialog(BuildContext context, File image) async {
-    TextEditingController controller = new TextEditingController();
-    return await showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) {
-        return SingleChildScrollView(
-          child: AlertDialog(
-            contentPadding: EdgeInsets.all(0),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text(
-                  'Cancel',
-                  style: TextStyle(
-                    color: kTextColor,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                style:
-                    TextButton.styleFrom(splashFactory: NoSplash.splashFactory),
-              ),
-              TextButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    _validInput = _formKey.currentState!.validate();
-                    print(_validInput);
-                    print(_fileName);
-                    Navigator.of(context).pop();
-                  }
-                },
-                child: Text(
-                  'Submit',
-                  style: TextStyle(
-                    color: kTextColor,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                style: TextButton.styleFrom(
-                  backgroundColor: kTextFieldColor,
-                  splashFactory: NoSplash.splashFactory,
-                ),
-              ),
-            ],
-            content: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 200,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: FileImage(image),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    TextFormField(
-                      maxLength: 20,
-                      controller: controller,
-                      validator: (value) {
-                        return value!.isNotEmpty ? null : 'Invalid Field';
-                      },
-                      onChanged: (value) {
-                        _fileName = value;
-                      },
-                      decoration: InputDecoration(
-                        hintText: 'Enter name of the photo',
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }
 
 // Changing the screen
   void changeScreen() {
@@ -204,9 +111,7 @@ class _PhotoScreenState extends State<PhotoScreen> {
     });
   }
 
-  void reFresh() {
-    setState(() {});
-  }
+  UploadPhotoList uploadPhotoList = UploadPhotoList();
 
   @override
   Widget build(BuildContext context) {
@@ -250,13 +155,9 @@ class _PhotoScreenState extends State<PhotoScreen> {
                       strokeWidth: 3,
                       child: TextButton(
                         onPressed: () async {
-                          _validInput = false;
-                          _fileName = '';
                           await _getImage(true);
-                          await createAletDialog(context, _image!);
-                          Provider.of<UploadPhotoData>(context, listen: false)
-                              .addToList(new UploadPhoto(
-                                  fileName: _fileName, image: _image!));
+                          uploadPhotoList
+                              .addToList(UploadPhoto(image: _image!));
                         },
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -290,70 +191,68 @@ class _PhotoScreenState extends State<PhotoScreen> {
               SizedBox(
                 height: 30,
               ),
-              (_image == null || !_validInput)
+              (_image == null)
                   ? Container()
-                  : Consumer<UploadPhotoData>(
-                      builder: (context, uploadPhotoData, child) {
-                        return Align(
-                          alignment: Alignment.centerLeft,
-                          child: Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: MediaQuery.of(context).size.height,
-                            child: ListView.separated(
-                              physics: NeverScrollableScrollPhysics(),
-                              scrollDirection: Axis.vertical,
-                              itemCount:
-                                  uploadPhotoData.getNumberOfUploadedImages(),
-                              itemBuilder: (context, int index) {
-                                final photo = uploadPhotoData.getImage();
-                                return Container(
-                                  height: 100,
-                                  width: MediaQuery.of(context).size.width,
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 6.0,
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        Container(
-                                          height: 90,
-                                          width: 90,
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              image: FileImage(uploadPhotoData
-                                                  .getFileImage(index)),
-                                              fit: BoxFit.cover,
-                                            ),
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(5)),
+                  : Align(
+                      alignment: Alignment.centerLeft,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height,
+                        child: ListView.separated(
+                          physics: NeverScrollableScrollPhysics(),
+                          scrollDirection: Axis.vertical,
+                          itemCount:
+                              uploadPhotoList.getNumberOfUploadedImages(),
+                          itemBuilder: (context, int index) {
+                            return Container(
+                              height: 100,
+                              width: MediaQuery.of(context).size.width,
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 6.0,
+                                ),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      height: 90,
+                                      width: 90,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: FileImage(
+                                            uploadPhotoList.getFileImage(index),
                                           ),
+                                          fit: BoxFit.cover,
                                         ),
-                                        SizedBox(
-                                          width: 20,
-                                        ),
-                                        Text(
-                                          uploadPhotoData.getFileName(index),
-                                          style: TextStyle(
-                                            color: kTextColor,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
-                                      ],
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(5)),
+                                      ),
                                     ),
-                                  ),
-                                );
-                              },
-                              separatorBuilder:
-                                  (BuildContext context, int index) {
-                                return SizedBox(
-                                  height: 10,
-                                );
-                              },
-                            ),
-                          ),
-                        );
-                      },
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    LinearPercentIndicator(
+                                      percent: 1,
+                                      width: 200,
+                                      lineHeight: 9,
+                                      animateFromLastPercent: true,
+                                      backgroundColor: kInactiveColor,
+                                      progressColor: kTextColor,
+                                      animation: true,
+                                      animationDuration: 3000,
+                                      
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                          separatorBuilder: (BuildContext context, int index) {
+                            return SizedBox(
+                              height: 10,
+                            );
+                          },
+                        ),
+                      ),
                     ),
             ],
           ),
