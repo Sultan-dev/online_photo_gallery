@@ -1,10 +1,12 @@
+import 'package:challengeday1/components/avatar_image.dart';
+import 'package:challengeday1/components/custom_text_button.dart';
 import 'package:challengeday1/utilities/constants.dart';
 import 'package:challengeday1/screens/search_screen.dart';
 import 'package:flutter/material.dart';
-
-import '../utilities/custom_animated_bottom_bar.dart';
+import '../components/custom_animated_bottom_bar.dart';
 import 'home_screen.dart';
 import 'photo_screen.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AccountScreen extends StatefulWidget {
   static String id = 'account_screen';
@@ -93,7 +95,164 @@ class _AccountScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(),
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Sultan',
+                    style: TextStyle(
+                      color: kTextColor,
+                      fontSize: 30,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(
+                        Icons.notifications_outlined,
+                        color: kTextColor,
+                        size: 28,
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Icon(
+                        Icons.menu_outlined,
+                        color: kTextColor,
+                        size: 28,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            AvatarImage(),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              'Sultan',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                color: kTextColor,
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Text(
+              'Capturing rare moments somtimes is hard, but the outcome is wonderful!.',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w300,
+                color: Colors.grey.withOpacity(0.7),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CustomTextButton(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Instagram',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: kTextColor,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      FaIcon(
+                        FontAwesomeIcons.instagram,
+                        size: 16,
+                        color: kTextColor,
+                      ),
+                    ],
+                  ),
+                  height: 30,
+                  width: 70,
+                  onPressed: () {},
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                CustomTextButton(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Donate',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: kTextColor,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      FaIcon(
+                        FontAwesomeIcons.paypal,
+                        size: 16,
+                        color: kTextColor,
+                      ),
+                    ],
+                  ),
+                  height: 30,
+                  width: 90,
+                  onPressed: () {},
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                CustomTextButton(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Twitter',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: kTextColor,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      FaIcon(
+                        FontAwesomeIcons.twitter,
+                        size: 16,
+                        color: kTextColor,
+                      ),
+                    ],
+                  ),
+                  height: 30,
+                  width: 90,
+                  onPressed: () {},
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
       bottomNavigationBar: _CustomNavigation(),
     );
   }

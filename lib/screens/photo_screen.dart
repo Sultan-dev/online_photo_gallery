@@ -1,9 +1,10 @@
 import 'package:challengeday1/classes/upload_photo.dart';
 import 'package:challengeday1/classes/upload_photo_list_class.dart';
+import 'package:challengeday1/components/custom_text_button.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import '../utilities/constants.dart';
-import '../utilities/custom_animated_bottom_bar.dart';
+import '../components/custom_animated_bottom_bar.dart';
 import 'account_screen.dart';
 import 'home_screen.dart';
 import 'search_screen.dart';
@@ -153,12 +154,7 @@ class _PhotoScreenState extends State<PhotoScreen> {
                       radius: Radius.circular(9),
                       color: kTextColor,
                       strokeWidth: 3,
-                      child: TextButton(
-                        onPressed: () async {
-                          await _getImage(true);
-                          uploadPhotoList
-                              .addToList(UploadPhoto(image: _image!));
-                        },
+                      child: CustomTextButton(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -178,11 +174,13 @@ class _PhotoScreenState extends State<PhotoScreen> {
                             )
                           ],
                         ),
-                        style: TextButton.styleFrom(
-                          backgroundColor: kTextFieldColor,
-                          minimumSize: Size(343, 125),
-                          splashFactory: NoSplash.splashFactory,
-                        ),
+                        onPressed: () async {
+                          await _getImage(true);
+                          uploadPhotoList
+                              .addToList(UploadPhoto(image: _image!));
+                        },
+                        width: 343,
+                        height: 125,
                       ),
                     ),
                   ),
@@ -232,14 +230,30 @@ class _PhotoScreenState extends State<PhotoScreen> {
                                     ),
                                     LinearPercentIndicator(
                                       percent: 1,
-                                      width: 200,
+                                      width: 225,
                                       lineHeight: 9,
                                       animateFromLastPercent: true,
                                       backgroundColor: kInactiveColor,
                                       progressColor: kTextColor,
                                       animation: true,
-                                      animationDuration: 3000,
-                                      
+                                      animationDuration: 3500,
+                                      onAnimationEnd: () {
+                                        final snackBar = SnackBar(
+                                          duration: Duration(
+                                            milliseconds: 3000,
+                                          ),
+                                          content: Text(
+                                            'Photo uploaded successfully!',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          backgroundColor: Colors.green,
+                                        );
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(snackBar);
+                                      },
                                     ),
                                   ],
                                 ),

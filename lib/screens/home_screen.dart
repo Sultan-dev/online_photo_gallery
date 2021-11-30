@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../utilities/constants.dart';
-import '../utilities/custom_animated_bottom_bar.dart';
+import '../components/custom_animated_bottom_bar.dart';
 import 'account_screen.dart';
 import 'photo_screen.dart';
 import 'search_screen.dart';

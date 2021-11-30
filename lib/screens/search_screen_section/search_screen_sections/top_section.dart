@@ -1,3 +1,4 @@
+import 'package:challengeday1/components/avatar_image.dart';
 import 'package:challengeday1/utilities/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -25,21 +26,7 @@ class TopSection extends StatelessWidget {
                   color: kTextColor,
                 ),
               ),
-              Container(
-                alignment: Alignment.center,
-                height: 70,
-                width: 70,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.grey,
-                  image: DecorationImage(
-                    image: AssetImage(
-                      'images/avatar.jpeg',
-                    ),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
+              AvatarImage(),
             ],
           ),
           SizedBox(

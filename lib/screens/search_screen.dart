@@ -1,7 +1,7 @@
 // ignore_for_file: override_on_non_overriding_member
 import 'package:challengeday1/utilities/constants.dart';
 import 'package:flutter/material.dart';
-import '../utilities/custom_animated_bottom_bar.dart';
+import '../components/custom_animated_bottom_bar.dart';
 import 'account_screen.dart';
 import 'home_screen.dart';
 import 'photo_screen.dart';
