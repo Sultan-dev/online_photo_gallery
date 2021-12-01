@@ -1,9 +1,11 @@
+//This for Search Screen widget
+
 import 'package:challengeday1/components/avatar_image.dart';
 import 'package:challengeday1/utilities/constants.dart';
 import 'package:flutter/material.dart';
 
-class TopSection extends StatelessWidget {
-  const TopSection({Key? key}) : super(key: key);
+class TopSectionSearchScreen extends StatelessWidget {
+  const TopSectionSearchScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

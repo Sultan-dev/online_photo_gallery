@@ -1,9 +1,12 @@
+import 'package:challengeday1/classes/upload_photo_data.dart';
 import 'package:challengeday1/screens/account_screen.dart';
 import 'package:challengeday1/screens/home_screen.dart';
 import 'package:challengeday1/screens/photo_screen.dart';
 import 'package:challengeday1/utilities/no_glow_behaviour.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'screens/search_screen.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -11,21 +14,27 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Roboto',
+    return ChangeNotifierProvider(
+      create: (context){
+        return UploadPhotoData();
+      },
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          fontFamily: 'Roboto',
+          backgroundColor: Colors.white,
+        ),
+        initialRoute: SearchScreen.id,
+        routes: {
+          SearchScreen.id: (context) => SearchScreen(),
+          HomeScreen.id: (context) => HomeScreen(),
+          PhotoScreen.id: (context) => PhotoScreen(),
+          AccountScreen.id: (context) => AccountScreen()
+        },
+        builder: (context, child) {
+          return ScrollConfiguration(behavior: NoGlowBehavior(), child: child!);
+        },
       ),
-      initialRoute: SearchScreen.id,
-      routes: {
-        SearchScreen.id: (context) => SearchScreen(),
-        HomeScreen.id: (context) => HomeScreen(),
-        PhotoScreen.id: (context) => PhotoScreen(),
-        AccountScreen.id: (context) => AccountScreen()
-      },
-      builder: (context, child) {
-        return ScrollConfiguration(behavior: NoGlowBehavior(), child: child!);
-      },
     );
   }
 }

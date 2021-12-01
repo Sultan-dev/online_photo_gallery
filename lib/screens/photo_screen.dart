@@ -1,8 +1,10 @@
 import 'package:challengeday1/classes/upload_photo.dart';
-import 'package:challengeday1/classes/upload_photo_list_class.dart';
+import 'package:challengeday1/classes/upload_photo_data.dart';
 import 'package:challengeday1/components/custom_text_button.dart';
+import 'package:challengeday1/components/upload_photo_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 import '../utilities/constants.dart';
 import '../components/custom_animated_bottom_bar.dart';
 import 'account_screen.dart';
@@ -10,7 +12,6 @@ import 'home_screen.dart';
 import 'search_screen.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'dart:io';
-import 'package:percent_indicator/percent_indicator.dart';
 
 class PhotoScreen extends StatefulWidget {
   static String id = 'photo_screen';
@@ -112,11 +113,10 @@ class _PhotoScreenState extends State<PhotoScreen> {
     });
   }
 
-  UploadPhotoList uploadPhotoList = UploadPhotoList();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -176,7 +176,7 @@ class _PhotoScreenState extends State<PhotoScreen> {
                         ),
                         onPressed: () async {
                           await _getImage(true);
-                          uploadPhotoList
+                          Provider.of<UploadPhotoData>(context, listen: false)
                               .addToList(UploadPhoto(image: _image!));
                         },
                         width: 343,
@@ -189,85 +189,7 @@ class _PhotoScreenState extends State<PhotoScreen> {
               SizedBox(
                 height: 30,
               ),
-              (_image == null)
-                  ? Container()
-                  : Align(
-                      alignment: Alignment.centerLeft,
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height,
-                        child: ListView.separated(
-                          physics: NeverScrollableScrollPhysics(),
-                          scrollDirection: Axis.vertical,
-                          itemCount:
-                              uploadPhotoList.getNumberOfUploadedImages(),
-                          itemBuilder: (context, int index) {
-                            return Container(
-                              height: 100,
-                              width: MediaQuery.of(context).size.width,
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 6.0,
-                                ),
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      height: 90,
-                                      width: 90,
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                          image: FileImage(
-                                            uploadPhotoList.getFileImage(index),
-                                          ),
-                                          fit: BoxFit.cover,
-                                        ),
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(5)),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 20,
-                                    ),
-                                    LinearPercentIndicator(
-                                      percent: 1,
-                                      width: 225,
-                                      lineHeight: 9,
-                                      animateFromLastPercent: true,
-                                      backgroundColor: kInactiveColor,
-                                      progressColor: kTextColor,
-                                      animation: true,
-                                      animationDuration: 3500,
-                                      onAnimationEnd: () {
-                                        final snackBar = SnackBar(
-                                          duration: Duration(
-                                            milliseconds: 3000,
-                                          ),
-                                          content: Text(
-                                            'Photo uploaded successfully!',
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 16,
-                                            ),
-                                          ),
-                                          backgroundColor: Colors.green,
-                                        );
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(snackBar);
-                                      },
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                          separatorBuilder: (BuildContext context, int index) {
-                            return SizedBox(
-                              height: 10,
-                            );
-                          },
-                        ),
-                      ),
-                    ),
+              (_image == null) ? Container() : UploadPhotoProvider(),
             ],
           ),
         ),

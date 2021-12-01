@@ -1,16 +1,18 @@
+//This for Search Screen widget
+
 import 'package:challengeday1/classes/image_class.dart';
 import 'package:challengeday1/classes/images_list_class.dart';
 import 'package:challengeday1/utilities/constants.dart';
 import 'package:flutter/material.dart';
 
-class BottomSection extends StatefulWidget {
-  const BottomSection({Key? key}) : super(key: key);
+class BottomSectionSearchScreen extends StatefulWidget {
+  const BottomSectionSearchScreen({Key? key}) : super(key: key);
 
   @override
-  State<BottomSection> createState() => _BottomSectionState();
+  State<BottomSectionSearchScreen> createState() => _BottomSectionSearchScreenState();
 }
 
-class _BottomSectionState extends State<BottomSection> {
+class _BottomSectionSearchScreenState extends State<BottomSectionSearchScreen> {
   ImageList imageList = new ImageList();
   @override
   void initState() {

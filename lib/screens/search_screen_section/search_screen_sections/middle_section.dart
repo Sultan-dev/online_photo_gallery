@@ -1,8 +1,10 @@
+//This for Search Screen widget
+
 import 'package:challengeday1/utilities/constants.dart';
 import 'package:flutter/material.dart';
 
-class MiddleSection extends StatelessWidget {
-  const MiddleSection({Key? key}) : super(key: key);
+class MiddleSectionSearchScreen extends StatelessWidget {
+  const MiddleSectionSearchScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

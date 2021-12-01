@@ -96,6 +96,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       bottomNavigationBar: _CustomNavigation(),
       body: SafeArea(
         child: Stack(
@@ -105,7 +106,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  TopSection(),
+                  TopSectionSearchScreen(),
                   Padding(
                     padding: const EdgeInsets.only(
                       left: 12,
@@ -120,7 +121,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       ),
                     ),
                   ),
-                  MiddleSection(),
+                  MiddleSectionSearchScreen(),
                   Padding(
                     padding: const EdgeInsets.only(
                       left: 12,
@@ -161,7 +162,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       ],
                     ),
                   ),
-                  BottomSection(),
+                  BottomSectionSearchScreen(),
                 ],
               ),
             ),
