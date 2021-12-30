@@ -2,6 +2,7 @@
 
 import 'package:challengeday1/components/avatar_image.dart';
 import 'package:challengeday1/components/custom_text_button.dart';
+import 'package:challengeday1/components/scondary_text.dart';
 import 'package:challengeday1/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -16,7 +17,7 @@ class TopSectionAccountScreen extends StatelessWidget {
         border: Border(
           bottom: BorderSide(
             width: 1,
-            color: Colors.grey.withOpacity(0.4),
+            color: kTextColor.withOpacity(0.4),
           ),
         ),
       ),
@@ -25,16 +26,10 @@ class TopSectionAccountScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           AvatarImage(),
-          SizedBox(
-            height: 10,
-          ),
-          Text(
-            'Sultan',
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w600,
-              color: kTextColor,
-            ),
+          SecondaryText(
+            sizedBoxHeight: 10,
+            text: 'Sultan',
+            fontSize: 14,
           ),
           SizedBox(
             height: 5,
@@ -55,6 +50,7 @@ class TopSectionAccountScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CustomTextButton(
+                borderRadius: 7,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -62,7 +58,7 @@ class TopSectionAccountScreen extends StatelessWidget {
                       'Instagram',
                       style: TextStyle(
                         fontSize: 12,
-                        color: kTextColor,
+                        color: Colors.white,
                         fontWeight: FontWeight.w300,
                       ),
                     ),
@@ -72,7 +68,7 @@ class TopSectionAccountScreen extends StatelessWidget {
                     FaIcon(
                       FontAwesomeIcons.instagram,
                       size: 16,
-                      color: kTextColor,
+                      color: Colors.white,
                     ),
                   ],
                 ),
@@ -84,14 +80,15 @@ class TopSectionAccountScreen extends StatelessWidget {
                 width: 20,
               ),
               CustomTextButton(
+                borderRadius: 7,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Donate',
+                      'Support Me',
                       style: TextStyle(
                         fontSize: 12,
-                        color: kTextColor,
+                        color: Colors.white,
                         fontWeight: FontWeight.w300,
                       ),
                     ),
@@ -101,7 +98,7 @@ class TopSectionAccountScreen extends StatelessWidget {
                     FaIcon(
                       FontAwesomeIcons.paypal,
                       size: 16,
-                      color: kTextColor,
+                      color: Colors.white,
                     ),
                   ],
                 ),
@@ -113,6 +110,7 @@ class TopSectionAccountScreen extends StatelessWidget {
                 width: 20,
               ),
               CustomTextButton(
+                borderRadius: 7,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -120,7 +118,7 @@ class TopSectionAccountScreen extends StatelessWidget {
                       'Twitter',
                       style: TextStyle(
                         fontSize: 12,
-                        color: kTextColor,
+                        color: Colors.white,
                         fontWeight: FontWeight.w300,
                       ),
                     ),
@@ -130,7 +128,7 @@ class TopSectionAccountScreen extends StatelessWidget {
                     FaIcon(
                       FontAwesomeIcons.twitter,
                       size: 16,
-                      color: kTextColor,
+                      color: Colors.white,
                     ),
                   ],
                 ),

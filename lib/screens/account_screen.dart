@@ -1,10 +1,9 @@
-import 'package:challengeday1/classes/upload_photo_data.dart';
+import 'package:challengeday1/components/main_text.dart';
 import 'package:challengeday1/screens/account_screen_section/bottom_section.dart';
 import 'package:challengeday1/screens/account_screen_section/top_section.dart';
 import 'package:challengeday1/utilities/constants.dart';
 import 'package:challengeday1/screens/search_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../components/custom_animated_bottom_bar.dart';
 import 'home_screen.dart';
 import 'photo_screen.dart';
@@ -35,7 +34,7 @@ class _AccountScreenState extends State<AccountScreen> {
 
   Widget _CustomNavigation() {
     return CustomAnimatedBottomBar(
-      backgroundColor: kTextFieldColor,
+      backgroundColor: kTextColor,
       selectedIndex: _selectedIndex,
       curve: Curves.easeIn,
       items: [
@@ -46,8 +45,8 @@ class _AccountScreenState extends State<AccountScreen> {
           title: Text(
             'Home',
           ),
-          activeColor: kTextColor,
-          inactiveColor: Color(0xff7170b2),
+          activeColor: Colors.white,
+          inactiveColor: kInactiveColor,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
@@ -57,8 +56,8 @@ class _AccountScreenState extends State<AccountScreen> {
           title: Text(
             'Photo',
           ),
-          activeColor: kTextColor,
-          inactiveColor: Color(0xff7170b2),
+          activeColor: Colors.white,
+          inactiveColor: kInactiveColor,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
@@ -68,8 +67,8 @@ class _AccountScreenState extends State<AccountScreen> {
           title: Text(
             'Search',
           ),
-          activeColor: kTextColor,
-          inactiveColor: Color(0xff7170b2),
+          activeColor: Colors.white,
+          inactiveColor: kInactiveColor,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
@@ -79,8 +78,8 @@ class _AccountScreenState extends State<AccountScreen> {
           title: Text(
             'Account',
           ),
-          activeColor: kTextColor,
-          inactiveColor: Color(0xff7170b2),
+          activeColor: Colors.white,
+          inactiveColor: kInactiveColor,
           textAlign: TextAlign.center,
         ),
       ],
@@ -101,13 +100,9 @@ class _AccountScreenState extends State<AccountScreen> {
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Text(
-          'Sultan',
-          style: TextStyle(
-            color: kTextColor,
-            fontSize: 30,
-            fontWeight: FontWeight.w700,
-          ),
+        title: MainText(
+          text: 'Sultan',
+          fontSize: 30,
         ),
         actions: [
           Padding(

@@ -6,12 +6,14 @@ class CustomTextButton extends StatelessWidget {
   final Widget child;
   final double height;
   final double width;
-
-  CustomTextButton(
-      {required this.child,
-      required this.height,
-      required this.width,
-      this.onPressed});
+  final double borderRadius;
+  CustomTextButton({
+    required this.child,
+    required this.height,
+    required this.width,
+    this.onPressed,
+    this.borderRadius = 15,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +21,11 @@ class CustomTextButton extends StatelessWidget {
       onPressed: onPressed,
       child: child,
       style: TextButton.styleFrom(
-        backgroundColor: kTextFieldColor,
+        backgroundColor: kTextColor,
         minimumSize: Size(width, height),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(borderRadius),
+        ),
         splashFactory: NoSplash.splashFactory,
       ),
     );

@@ -36,4 +36,4 @@ List<String> kImagesListVertical = [
 //Colors
 Color kTextColor = Color(0xff32316B);
 Color kTextFieldColor = Color(0xffd9e1fc);
-Color kInactiveColor = Color(0xff7170b2);
+Color kInactiveColor = Color(0xff8A89D2);

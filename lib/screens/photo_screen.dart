@@ -1,6 +1,7 @@
 import 'package:challengeday1/classes/upload_photo.dart';
 import 'package:challengeday1/classes/upload_photo_data.dart';
 import 'package:challengeday1/components/custom_text_button.dart';
+import 'package:challengeday1/components/main_text.dart';
 import 'package:challengeday1/components/upload_photo_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -41,7 +42,7 @@ class _PhotoScreenState extends State<PhotoScreen> {
 // bottom Navigation bar
   Widget _CustomNavigation() {
     return CustomAnimatedBottomBar(
-      backgroundColor: kTextFieldColor,
+      backgroundColor: kTextColor,
       selectedIndex: _selectedIndex,
       curve: Curves.easeIn,
       items: [
@@ -52,8 +53,8 @@ class _PhotoScreenState extends State<PhotoScreen> {
           title: Text(
             'Home',
           ),
-          activeColor: kTextColor,
-          inactiveColor: Color(0xff7170b2),
+          activeColor: Colors.white,
+          inactiveColor: kInactiveColor,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
@@ -63,8 +64,8 @@ class _PhotoScreenState extends State<PhotoScreen> {
           title: Text(
             'Photo',
           ),
-          activeColor: kTextColor,
-          inactiveColor: Color(0xff7170b2),
+          activeColor: Colors.white,
+          inactiveColor: kInactiveColor,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
@@ -74,8 +75,8 @@ class _PhotoScreenState extends State<PhotoScreen> {
           title: Text(
             'Search',
           ),
-          activeColor: kTextColor,
-          inactiveColor: Color(0xff7170b2),
+          activeColor: Colors.white,
+          inactiveColor: kInactiveColor,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
@@ -85,8 +86,8 @@ class _PhotoScreenState extends State<PhotoScreen> {
           title: Text(
             'Account',
           ),
-          activeColor: kTextColor,
-          inactiveColor: Color(0xff7170b2),
+          activeColor: Colors.white,
+          inactiveColor: kInactiveColor,
           textAlign: TextAlign.center,
         ),
       ],
@@ -122,69 +123,60 @@ class _PhotoScreenState extends State<PhotoScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    'Upload your file',
-                    style: TextStyle(
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    MainText(
+                      text: 'Upload your file',
                       fontSize: 20,
-                      fontWeight: FontWeight.w700,
                     ),
-                  ),
-                  SizedBox(
-                    height: 7,
-                  ),
-                  Text(
-                    'File should be jpg, png',
-                    style: TextStyle(
-                      color: Colors.grey[600],
-                      fontSize: 12,
+                    SizedBox(
+                      height: 7,
                     ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: DottedBorder(
-                      borderType: BorderType.RRect,
-                      dashPattern: [10, 2],
-                      radius: Radius.circular(9),
-                      color: kTextColor,
-                      strokeWidth: 3,
-                      child: CustomTextButton(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.file_upload_outlined,
-                              size: 28,
-                              color: kTextColor,
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              'Select your file',
-                              style: TextStyle(
-                                color: kTextColor.withOpacity(0.8),
-                              ),
-                            )
-                          ],
-                        ),
-                        onPressed: () async {
-                          await _getImage(true);
-                          Provider.of<UploadPhotoData>(context, listen: false)
-                              .addToList(UploadPhoto(image: _image!));
-                        },
-                        width: 343,
-                        height: 125,
+                    Text(
+                      'File should be jpg, png',
+                      style: TextStyle(
+                        color: Colors.grey[600],
+                        fontSize: 12,
                       ),
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      height: 30,
+                    ),
+                    CustomTextButton(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.file_upload_outlined,
+                            size: 32,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'Select your file',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
+                          )
+                        ],
+                      ),
+                      onPressed: () async {
+                        await _getImage(true);
+                        Provider.of<UploadPhotoData>(context, listen: false)
+                            .addToList(UploadPhoto(image: _image!));
+                      },
+                      width: MediaQuery.of(context).size.width,
+                      height: 125,
+                    ),
+                  ],
+                ),
               ),
               SizedBox(
                 height: 30,

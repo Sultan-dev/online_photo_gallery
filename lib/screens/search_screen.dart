@@ -1,13 +1,14 @@
 // ignore_for_file: override_on_non_overriding_member
+import 'package:challengeday1/components/main_text.dart';
 import 'package:challengeday1/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import '../components/custom_animated_bottom_bar.dart';
 import 'account_screen.dart';
 import 'home_screen.dart';
 import 'photo_screen.dart';
-import 'search_screen_section/search_screen_sections/bottom_section.dart';
-import 'search_screen_section/search_screen_sections/middle_section.dart';
-import 'search_screen_section/search_screen_sections/top_section.dart';
+import 'search_screen_sections/bottom_section.dart';
+import 'search_screen_sections/middle_section.dart';
+import 'search_screen_sections/top_section.dart';
 
 class SearchScreen extends StatefulWidget {
   static String id = 'search_screen';
@@ -35,7 +36,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
   Widget _CustomNavigation() {
     return CustomAnimatedBottomBar(
-      backgroundColor: kTextFieldColor,
+      backgroundColor: kTextColor,
       selectedIndex: _selectedIndex,
       curve: Curves.easeIn,
       items: [
@@ -46,7 +47,7 @@ class _SearchScreenState extends State<SearchScreen> {
           title: Text(
             'Home',
           ),
-          activeColor: kTextColor,
+          activeColor: Colors.white,
           inactiveColor: kInactiveColor,
           textAlign: TextAlign.center,
         ),
@@ -57,7 +58,7 @@ class _SearchScreenState extends State<SearchScreen> {
           title: Text(
             'Photo',
           ),
-          activeColor: kTextColor,
+          activeColor: Colors.white,
           inactiveColor: kInactiveColor,
           textAlign: TextAlign.center,
         ),
@@ -68,7 +69,7 @@ class _SearchScreenState extends State<SearchScreen> {
           title: Text(
             'Search',
           ),
-          activeColor: kTextColor,
+          activeColor: Colors.white,
           inactiveColor: kInactiveColor,
           textAlign: TextAlign.center,
         ),
@@ -79,7 +80,7 @@ class _SearchScreenState extends State<SearchScreen> {
           title: Text(
             'Account',
           ),
-          activeColor: kTextColor,
+          activeColor: Colors.white,
           inactiveColor: kInactiveColor,
           textAlign: TextAlign.center,
         ),
@@ -112,13 +113,8 @@ class _SearchScreenState extends State<SearchScreen> {
                       left: 12,
                       top: 8,
                     ),
-                    child: Text(
-                      'Catagory',
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.w700,
-                        color: kTextColor,
-                      ),
+                    child: MainText(
+                      text: 'Catagory',
                     ),
                   ),
                   MiddleSectionSearchScreen(),
@@ -131,13 +127,8 @@ class _SearchScreenState extends State<SearchScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          'Explore',
-                          style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.w700,
-                            color: kTextColor,
-                          ),
+                        MainText(
+                          text: 'Explore',
                         ),
                         TextButton(
                           onPressed: () {},

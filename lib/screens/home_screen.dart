@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _CustomNavigation() {
     return CustomAnimatedBottomBar(
-      backgroundColor: kTextFieldColor,
+      backgroundColor: kTextColor,
       selectedIndex: _selectedIndex,
       curve: Curves.easeIn,
       items: [
@@ -43,8 +43,8 @@ class _HomeScreenState extends State<HomeScreen> {
           title: Text(
             'Home',
           ),
-          activeColor: kTextColor,
-          inactiveColor: Color(0xff7170b2),
+          activeColor: Colors.white,
+          inactiveColor: kInactiveColor,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
@@ -54,8 +54,8 @@ class _HomeScreenState extends State<HomeScreen> {
           title: Text(
             'Photo',
           ),
-          activeColor: kTextColor,
-          inactiveColor: Color(0xff7170b2),
+          activeColor: Colors.white,
+          inactiveColor: kInactiveColor,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
@@ -65,8 +65,8 @@ class _HomeScreenState extends State<HomeScreen> {
           title: Text(
             'Search',
           ),
-          activeColor: kTextColor,
-          inactiveColor: Color(0xff7170b2),
+          activeColor: Colors.white,
+          inactiveColor: kInactiveColor,
           textAlign: TextAlign.center,
         ),
         BottomNavyBarItem(
@@ -76,8 +76,8 @@ class _HomeScreenState extends State<HomeScreen> {
           title: Text(
             'Account',
           ),
-          activeColor: kTextColor,
-          inactiveColor: Color(0xff7170b2),
+          activeColor: Colors.white,
+          inactiveColor: kInactiveColor,
           textAlign: TextAlign.center,
         ),
       ],
@@ -89,6 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
       },
     );
   }
+
 
   @override
   Widget build(BuildContext context) {
