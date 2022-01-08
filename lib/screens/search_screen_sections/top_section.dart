@@ -3,7 +3,6 @@
 import 'package:challengeday1/components/avatar_image.dart';
 import 'package:challengeday1/components/custom_text_field.dart';
 import 'package:challengeday1/components/main_text.dart';
-import 'package:challengeday1/utilities/constants.dart';
 import 'package:flutter/material.dart';
 
 class TopSectionSearchScreen extends StatelessWidget {
@@ -24,13 +23,16 @@ class TopSectionSearchScreen extends StatelessWidget {
               MainText(
                 text: 'Find Inspriation\nPhotos',
               ),
-              AvatarImage(),
+              AvatarImage(
+                image: AssetImage(
+                  'images/avatar.jpeg',
+                ),
+              ),
             ],
           ),
           CustomTextField(
-            isFilled: false,
             prefixIcon: Icons.search_outlined,
-            text: 'Search photos ...',
+            hintText: 'Search photos ...',
             sizedBoxHeight: 20,
           ),
         ],

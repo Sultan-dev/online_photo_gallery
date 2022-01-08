@@ -1,4 +1,3 @@
-import 'package:challengeday1/utilities/constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextButton extends StatelessWidget {
@@ -7,12 +6,14 @@ class CustomTextButton extends StatelessWidget {
   final double height;
   final double width;
   final double borderRadius;
+  final color;
   CustomTextButton({
     required this.child,
     required this.height,
     required this.width,
     this.onPressed,
     this.borderRadius = 15,
+    this.color = Colors.white,
   });
 
   @override
@@ -21,7 +22,7 @@ class CustomTextButton extends StatelessWidget {
       onPressed: onPressed,
       child: child,
       style: TextButton.styleFrom(
-        backgroundColor: kTextColor,
+        backgroundColor: color,
         minimumSize: Size(width, height),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius),

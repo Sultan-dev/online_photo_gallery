@@ -9,4 +9,8 @@ class UploadPhoto {
   void uploadDone() {
     isUploaded = !isUploaded;
   }
+
+  File getFileImage() {
+    return image;
+  }
 }

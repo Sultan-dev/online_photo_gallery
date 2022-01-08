@@ -40,6 +40,7 @@ class WelcomeScreen extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
+                color: kTextColor,
                 height: 55,
                 width: MediaQuery.of(context).size.width,
                 onPressed: () {

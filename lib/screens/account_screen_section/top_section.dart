@@ -25,7 +25,11 @@ class TopSectionAccountScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          AvatarImage(),
+          AvatarImage(
+            image: AssetImage(
+              'images/avatar.jpeg',
+            ),
+          ),
           SecondaryText(
             sizedBoxHeight: 10,
             text: 'Sultan',
@@ -51,6 +55,7 @@ class TopSectionAccountScreen extends StatelessWidget {
             children: [
               CustomTextButton(
                 borderRadius: 7,
+                color: kTextColor,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -81,6 +86,7 @@ class TopSectionAccountScreen extends StatelessWidget {
               ),
               CustomTextButton(
                 borderRadius: 7,
+                color: kTextColor,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -111,6 +117,7 @@ class TopSectionAccountScreen extends StatelessWidget {
               ),
               CustomTextButton(
                 borderRadius: 7,
+                color: kTextColor,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

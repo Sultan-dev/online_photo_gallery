@@ -2,21 +2,22 @@ import 'package:challengeday1/utilities/constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
-  final String text;
-  final IconData prefixIcon;
-  final fillColor;
+  final String hintText;
+  final prefixIcon;
   final suffixIcon;
-  final onPressed;
-  final bool isFilled;
+  final onPressedIconButton;
   final double sizedBoxHeight;
+  final onChanged;
+  final bool secureText;
+
   const CustomTextField({
-    required this.text,
-    required this.prefixIcon,
-    this.fillColor = null,
+    required this.hintText,
+    this.prefixIcon = null,
     this.suffixIcon = null,
-    this.onPressed,
-    required this.isFilled,
+    this.onPressedIconButton,
     required this.sizedBoxHeight,
+    this.onChanged,
+    this.secureText = false,
   });
 
   @override
@@ -32,22 +33,20 @@ class CustomTextField extends StatelessWidget {
             color: kTextColor,
           ),
           obscuringCharacter: '*',
-          obscureText: true,
+          obscureText: secureText,
           decoration: InputDecoration(
-            filled: isFilled,
-            fillColor: fillColor,
-            hintText: text,
+            filled: false,
+            hintText: hintText,
             hintStyle: TextStyle(
-              color: kTextColor,
+              color: Colors.grey,
             ),
-            //fillColor: kTextFieldColor,
-            prefixIcon: Icon(
+            prefixIcon: (prefixIcon != null) ? Icon(
               prefixIcon,
               color: kTextColor,
-            ),
-            suffixIcon: suffixIcon != null
+            ): null,
+            suffixIcon: (suffixIcon != null)
                 ? IconButton(
-                    onPressed: onPressed,
+                    onPressed: onPressedIconButton,
                     icon: Icon(
                       suffixIcon,
                       color: kTextColor,
@@ -71,6 +70,7 @@ class CustomTextField extends StatelessWidget {
               ),
             ),
           ),
+          onChanged: onChanged,
         ),
       ],
     );

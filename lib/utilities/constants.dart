@@ -37,3 +37,6 @@ List<String> kImagesListVertical = [
 Color kTextColor = Color(0xff32316B);
 Color kTextFieldColor = Color(0xffd9e1fc);
 Color kInactiveColor = Color(0xff8A89D2);
+
+//values
+const double kAnimationWidth = 2.0;

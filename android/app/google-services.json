@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "38412420333",
+    "project_id": "online-photo-gallery-19fb2",
+    "storage_bucket": "online-photo-gallery-19fb2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:38412420333:android:2429b379ae420a6b9b78e4",
+        "android_client_info": {
+          "package_name": "com.example.challengeday1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "38412420333-u1c4he3u16k07jbkb6mgkdq05up9qns9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANAdhURlGW2pVF4282GPz6STYBM0UUFfU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "38412420333-u1c4he3u16k07jbkb6mgkdq05up9qns9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

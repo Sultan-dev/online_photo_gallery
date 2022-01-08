@@ -11,7 +11,6 @@ import '../components/custom_animated_bottom_bar.dart';
 import 'account_screen.dart';
 import 'home_screen.dart';
 import 'search_screen.dart';
-import 'package:dotted_border/dotted_border.dart';
 import 'dart:io';
 
 class PhotoScreen extends StatefulWidget {
@@ -147,6 +146,7 @@ class _PhotoScreenState extends State<PhotoScreen> {
                       height: 30,
                     ),
                     CustomTextButton(
+                      color: kTextColor,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
